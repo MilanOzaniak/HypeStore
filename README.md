@@ -16,3 +16,16 @@ Stránka, ktorá slúži na inzerovanie oblečenia.
 - Zobrazovanie profilov ostatných uživateľov
 
 ## Miľníky
+- Vytvorenie základného UI
+- Vytvorenie modelu User a Item
+- Vytvorenie rolí User/Admin
+- Implementovanie JWT
+- Posielanie dát z frontendu na server cez HTTP requesty
+- Základná navigácia a zlepšenie UI
+- Zlepšenie funkcionality (odstraňovanie inzerátov, zobrazovanie inzerátov na profile uživateľa)
+
+## Cieľe
+- Vylepšiť UI
+- Optimalizácia
+- Hostnuť na server
+- Spojazdniť doménu
