@@ -4,10 +4,10 @@ Stránka, ktorá slúži na inzerovanie oblečenia.
 ## Team
 
 **FrontEnd**
-- [Lukáš Gašpierik]
+- [Lukáš Gašpierik](https://github.com/LukasGaspierik "Lukáš Gašpierik")
 
 **BackEnd**
-- [Milan Ozaniak]
+- [Milan Ozaniak](https://github.com/MilanOzaniak "Milan Ozaniak")
 
 ## Funkcie
 - Registrácia a prihlasovanie [JWT]
