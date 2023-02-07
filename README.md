@@ -1,5 +1,5 @@
 # HypeStore
-Stránka, ktorá slúži na inzerovanie oblečenia.
+Stránka, ktorá slúži na inzerovanie oblečenia. Po registrácii použivateľ dokáže vytvárať inzeráty, pozerať profily ostatných použivateľov a odstraňovať inzeráty na svojom profile.
 
 ## Team
 
