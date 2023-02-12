@@ -1,0 +1,11 @@
+.list-wrap {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem;
+  padding: 1%;
+}
+
+.listItem-wrap {
+  display: flex;
+  flex-direction: column;
+}
