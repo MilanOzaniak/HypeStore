@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.css';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import { CgProfile } from 'react-icons/cg'
 import { useState } from 'react';
 
 
@@ -42,7 +43,7 @@ const Navbar = ({toogle}) => {
     <>
       <nav className='navbar'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-          HYPESTORE
+            HYPESTORE
           <i className='fab fa-firstdraft' />
         </Link>
         <div className='menu-icon' onClick={handleClick}>
@@ -86,7 +87,7 @@ const Navbar = ({toogle}) => {
                 <a className="dropbtn">{currentUser}</a>
               </li>
               <div className='dropdown-content'>
-                <Link to={`/currentUser/${currentUser}`} >Profile</Link>
+                <Link to={`/currentUser/${currentUser}`}>Profile</Link>
                 <Link to='/' onClick={handleLogOut}>Log Out</Link>
               </div>
             </div>

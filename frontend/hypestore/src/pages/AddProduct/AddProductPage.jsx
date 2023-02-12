@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './AddProductPage.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -131,7 +131,7 @@ function AddProductPage() {
             <input id="fileInput" type="file" />
           </div>
           <div className="inputfield">
-              <input to={'/'} type="submit" value="Create Item" className="btn" onClick={handleSubmit}></input>
+              <input to={'/'} type="submit" value="Create Item" className="btn1" onClick={handleSubmit}></input>
           </div>
         </div>
       </div>

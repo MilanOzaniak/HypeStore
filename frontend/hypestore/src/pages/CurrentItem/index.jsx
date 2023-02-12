@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles.css';
-import pic from "./../../images/pic.png"
+import './CurrentItem.css';
+import pic from "./../../images/pic1.png"
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
@@ -32,18 +32,16 @@ const CurrentItemPage = () =>{
         .then(()=>{
             window.location.reload(false);
         })
-        
     }
-
-
-
     return (
-
         <body>
             <section>
                 <div className="container flex">
+                    <div className='' style={{display: isAdmin? 'block' : 'none'}}>
+                        <Link to={'/'} className='delete' onClick={()=>{handleDelete(id)}}>X</Link>
+                    </div>
                     <div className="left">
-                        <div className="main_image">
+                        <div className="main_image1">
                             <img src={currentItem.imagePath} alt=""></img>
                         </div>
                     </div>
@@ -52,16 +50,16 @@ const CurrentItemPage = () =>{
                             <h6>{"Pridané " + currentItem.date}</h6>
                         </div>
                         <div className="Product-Title">
-                            <h1>{currentItem.title}</h1>
+                            {currentItem.title}
                         </div>
                         <div className="Product-Info">
                             <p>{currentItem.description} </p>
                         </div>
+                        <div className="Product-Size">
+                            <h3>Size: {currentItem.size}</h3>
+                        </div>
                         <div className="Product-Price">
                             <h2>{currentItem.price}<small>€</small></h2>
-                            <div className='' style={{display: isAdmin? 'block' : 'none'}}>
-                                <Link to={'/'} className='delete' onClick={()=>{handleDelete(id)}}>X</Link>
-                            </div>
                         </div>
                         <div className='profile'>
                             <div className="profilePic">

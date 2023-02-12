@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import './App.css'
+import './Register.css'
 import axios from 'axios';
 import validateInfo from '../../data/validateInfo';
 import { Link } from 'react-router-dom';
@@ -125,7 +125,7 @@ const FormSignup = () => {
         </Link>
 
         <span className='form-input-login'>
-          Already have an account? Login <a href='/Signup'>here</a>
+          Already have an account? Login <a href='/Signup'>here.</a>
         </span>
       </form>
     </div>

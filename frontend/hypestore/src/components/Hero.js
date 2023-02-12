@@ -26,6 +26,7 @@ const HeroSlide = styled.div`
 z-index: 1;
 width: 100%;
 height: 100%;
+
 `;
 const HeroSlider = styled.div`
 position: absolute;
@@ -58,8 +59,8 @@ const HeroImage = styled.img`
 position: absolute;
 top: 0;
 left: 0;
-width: 100vw;
-height: 100vw;
+width: 100%;
+height: 100%;
 object-fit: fill;
 `;
 

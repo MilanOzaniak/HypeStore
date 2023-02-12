@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import image from '../../images/pic.png'
+import image from '../../images/pic1.png'
 import { Link, useParams } from "react-router-dom";
 
 const UserPage = () =>{
@@ -17,28 +17,29 @@ const UserPage = () =>{
 
     return(
         <div>
-            <div className='container'>
-                <div className='profile-details'>
-                    <div className='pd-row'>
-                        <div className='left'>
-                            <img src={image} className='pd-image'></img>
+            <div className='container1'>
+                <div className='profile-details1'>
+                    <div className='pd-row1'>
+                        <div className='left1'>
+                            <img src={image} className='pd-image1'></img>
                         </div>
-                        <div className='right'>
-                            <div className='Profile-Info'>
+                        <div className='right1'>
+                            <div className='Profile-Info1'>
                                 <h3>{currentUser.userName}</h3>
                             </div>
-                            <div className='Profile-Email'>
+                            <div className='Profile-Email1'>
                                 <h3>{currentUser.email}</h3>
                             </div>
-                            <div className='Profile-Number'>
+                            <div className='Profile-Number1'>
                                 <h3>{currentUser.pnumber}</h3>
                             </div>
                         </div>
-                        <div className="Profile-Description">
-                            <a >{currentUser.description}</a>
-                        </div>
                     </div>
                 </div>
+            </div>
+            <div className="submenu">
+                <div className="nadpis">PRODUCTS</div>
+
             </div>
 
             <div className='list-wrap'>

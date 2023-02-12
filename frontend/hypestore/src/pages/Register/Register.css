@@ -104,6 +104,7 @@
 .form-inputs {
   margin-bottom: 0.5rem;
   width: 80%;
+  
 }
 
 .form-inputs p {
@@ -127,6 +128,7 @@
   height: 40px;
   width: 100%;
   border: none;
+  background-color: white;
 }
 
 .form-input::placeholder {

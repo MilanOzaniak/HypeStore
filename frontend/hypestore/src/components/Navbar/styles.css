@@ -139,7 +139,7 @@
   display: none;
   position: absolute;
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
-  width: 120%;
+  width: 140%;
   z-index: 3 ;
   flex-direction: column;
   align-items: center;
@@ -151,7 +151,7 @@
   text-decoration: none;
   display: block;
 }
-.dropdown-content a:hover {color: #00b4d8;}
+.dropdown-content a:hover {color: #1888ff;}
 
 .drop:hover .dropdown-content {display: flex;}
 
