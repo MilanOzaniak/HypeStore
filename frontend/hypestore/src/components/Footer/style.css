@@ -1,5 +1,8 @@
 .Footer {
     background-color: #101010;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 .Footer-Content {
     box-sizing: border-box;

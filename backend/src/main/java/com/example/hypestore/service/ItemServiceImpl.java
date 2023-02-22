@@ -1,11 +1,13 @@
 package com.example.hypestore.service;
 
 import com.example.hypestore.model.Item;
+import com.example.hypestore.model.ItemBasicInfo;
 import com.example.hypestore.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import com.example.hypestore.model.ItemBasicInfo;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,14 +24,13 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private ItemRepository itemRepository;
-
     @Autowired
     private UserService userService;
 
     public static String uploadDirectory = System.getProperty("user.dir") + "/files/images";
 
     @Override
-    public void uploadItem(MultipartFile image){
+    public void uploadImage(MultipartFile image){
         fileName = image.getOriginalFilename();
         Path fileNameAndPath = Paths.get(uploadDirectory,fileName);
         try {
@@ -44,14 +45,24 @@ public class ItemServiceImpl implements ItemService {
         item.setUser(userService.getCurrentUser());
         item.setUserName(userService.getCurrentUser().getUserName());
         item.setDate(LocalDate.now());
-        item.setImagePath("http://localhost:8080/item/getImage/" + fileName);
-        item.setImageName(fileName);
         return itemRepository.save(item);
     }
 
     @Override
     public Optional<Item> getCurrentItem(int id){
         return itemRepository.findById(id);
+    }
+
+    @Override
+    public Item changeCurrentitem(ItemBasicInfo itemBasicInfo){
+        Item item1 = itemRepository.findById(itemBasicInfo.getId()).get();
+        item1.setTitle(itemBasicInfo.getTitle());
+        item1.setPrice(itemBasicInfo.getPrice());
+        item1.setSize(itemBasicInfo.getSize());
+        item1.setCategory(itemBasicInfo.getCategory());
+        item1.setDescription(itemBasicInfo.getDescription());
+        itemRepository.save(item1);
+        return item1;
     }
 
     //filter

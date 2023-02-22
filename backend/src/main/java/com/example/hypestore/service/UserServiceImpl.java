@@ -5,6 +5,7 @@ import com.example.hypestore.model.User;
 import com.example.hypestore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public List<User> getAllUsers() {
@@ -41,5 +45,32 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Item> getItemsForCurrentUser() {
         return userRepository.findByUserName(getCurrentUser().getUserName()).get().getItems();
+    }
+
+    @Override
+    public String changePassword(String oldPassword, String newPassword) {
+        User user = userRepository.findByUserName(getCurrentUser().getUserName()).get();
+        if (passwordEncoder.matches(oldPassword, user.getPassword())) {
+            user.setPassword(passwordEncoder.encode(newPassword));
+            userRepository.save(user);
+            return "success";
+        }
+        return "failed";
+    }
+
+    @Override
+    public User changePnumber(String pNumber){
+        User user = userRepository.findByUserName(getCurrentUser().getUserName()).get();
+        user.setPnumber(pNumber);
+        return userRepository.save(user);
+
+    }
+
+    @Override
+    public User changeDescription(String description){
+        User user = userRepository.findByUserName(getCurrentUser().getUserName()).get();
+        user.setDescription(description);
+        return userRepository.save(user);
+
     }
 }

@@ -46,6 +46,19 @@ public class UserController {
         return userService.getCurrentUser().toString() + userService.getItemsForCurrentUser();
     }
 
+    @PostMapping("/changePassword")
+    public String changePassword(@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass){
+        return userService.changePassword(oldPass,newPass);
+    }
 
+    @PostMapping("/changePnumber")
+    public User changePnumber(@RequestParam("pNumber") String pNumber){
+        return userService.changePnumber(pNumber);
+    }
+
+    @PostMapping("/changeDescription")
+    public User changeDescription(@RequestParam("description") String description){
+        return userService.changeDescription(description);
+    }
 
 }

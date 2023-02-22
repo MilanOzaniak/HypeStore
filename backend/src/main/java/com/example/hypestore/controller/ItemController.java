@@ -1,6 +1,7 @@
 package com.example.hypestore.controller;
 
 import com.example.hypestore.model.Item;
+import com.example.hypestore.model.ItemBasicInfo;
 import com.example.hypestore.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -28,7 +29,7 @@ public class ItemController {
     @PostMapping("/uploadImage")
     @ResponseBody
     public String uploadImage(@RequestParam("image")MultipartFile image) throws IOException{
-        itemService.uploadItem(image);
+        itemService.uploadImage(image);
         return "saved";
     }
 
@@ -49,6 +50,11 @@ public class ItemController {
     @GetMapping("/del/{id}")
     public void deleteItem(@PathVariable Integer id){
         itemService.deleteItemById(id);
+    }
+
+    @PostMapping("/changeItem/{id}")
+    public Item changeCurrentItem(@RequestBody ItemBasicInfo itemBasicInfo){
+        return itemService.changeCurrentitem(itemBasicInfo);
     }
 
     //filter

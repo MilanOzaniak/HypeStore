@@ -10,8 +10,7 @@ function AddProductPage() {
   const[size, setSize] = useState('')
   const[price, setPrice] = useState('')
   const[category, setCategory] = useState('')
-
-  var fileInput = document.getElementById("fileInput");
+  const[file, setFile] = useState('')
 
   const titleChangeHandler = event => {
     setTitle(event.target.value)
@@ -29,23 +28,29 @@ function AddProductPage() {
     setCategory(event.target.value)
   }
 
-  const handleSubmit =(e) =>{
-    e.preventDefault();
-    const item={title, price, category, size, description}
+  const fileChangeHandler = event => {
+    setFile(event.target.files[0])
+  }
+
+  function handleSubmit(){
     const token = localStorage.getItem("token");
     let data = new FormData();
-    var fileInput = document.getElementById("fileInput");
-    data.append("image", fileInput.files[0]);
+    data.append("image", file);
+    const imagePath = "http://localhost:8080/item/getImage/" + file.name;
+    const item={title, price, category, size, description, imagePath};
+    //window.location.href = "/";
 
     axios.post("http://localhost:8080/item/uploadImage", data, {
       headers:{"Authorization" : `Bearer ${token}`}})
-      .then(console.log("image uploaded"))
+      .then(
+        console.log("image uploaded" ),
+        data.delete("image"))
 
     axios.post("http://localhost:8080/item/create", item, {
       headers:{"Authorization" : `Bearer ${token}`}})
     .then(
       console.log("Item created"),
-      console.log(data)
+      console.log(file),
       );
   }
     return (
@@ -128,10 +133,10 @@ function AddProductPage() {
             </textarea>
           </div>
           <div className="multipart">
-            <input id="fileInput" type="file" />
+            <input id="fileInput" type="file" onChange={fileChangeHandler}/>
           </div>
           <div className="inputfield">
-              <input to={'/'} type="submit" value="Create Item" className="btn1" onClick={handleSubmit}></input>
+              <input type="submit" value="Create Item" className="btn1" onClick={handleSubmit}></input>
           </div>
         </div>
       </div>

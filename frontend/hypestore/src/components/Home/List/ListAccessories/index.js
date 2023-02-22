@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import './AccessoriesStyle.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';

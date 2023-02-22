@@ -12,4 +12,7 @@ public interface UserService {
     User getCurrentUser();
     List<Item> getItemsForCurrentUser();
     Optional<User> getCurrentUser(String userName);
+    String changePassword(String oldPassword, String newPassword);
+    User changePnumber(String pNumber);
+    User changeDescription(String description);
 }

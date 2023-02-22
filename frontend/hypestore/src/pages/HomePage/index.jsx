@@ -6,11 +6,8 @@ import ListItem from '../../components/Home/List/ListItem';
 const Home = () => {
   return (
     <><Hero slides={SliderData} />
-    <div className='home_panelList-wrap'>
-      <div className='home_list-wrap'>
         <ListItem />
-      </div>
-    </div></>
+    </>
   );
 };
 

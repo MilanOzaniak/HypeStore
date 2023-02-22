@@ -49,7 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers("/admin","/user/del/*").hasRole("ADMIN")
                 .antMatchers("/user","/user/getItems","/item/del/*", "/item/create", "/item/uploadImage").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/", "/item/getAll", "/auth", "/register", "/item/getImage/*", "/item/getAllShoes", "/item/getAllClothing", "/item/getAllAccessories", "/item/getItem/*", "/user/getUser/*").permitAll()
+                .antMatchers("/", "/item/getAll", "/auth", "/register", "/item/getImage/*", "/item/getAllShoes", "/item/getAllClothing", "/item/getAllAccessories", "/item/getItem/*", "/user/getUser/*", "/user/changePassword", "/user/changePnumber", "/user/changeDescription").permitAll()
                 .anyRequest().authenticated()
                 .and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
