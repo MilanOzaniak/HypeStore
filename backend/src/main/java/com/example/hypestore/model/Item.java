@@ -3,6 +3,8 @@ package com.example.hypestore.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Item {
@@ -17,8 +19,11 @@ public class Item {
     private User user;
     private String userName;
     private LocalDate date;
-    private String imageName;
-    private String imagePath;
+    private Boolean reserved;
+
+    @ElementCollection
+    @CollectionTable(name = "imageNames")
+    private List<String> imageNames = new ArrayList<>();
 
     @Access(AccessType.PROPERTY)
     @ManyToOne
@@ -94,19 +99,22 @@ public class Item {
         this.date = date;
     }
 
-    public String getImageName() {
-        return imageName;
+    public List<String>getImageNames() {
+        return imageNames;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    public void setImagePaths(List<String> imageNames) {
+        this.imageNames = imageNames;
     }
 
-    public String getImagePath() {
-        return imagePath;
+
+    public Boolean getReserved() {
+        return reserved;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setReserved(Boolean reserved) {
+        this.reserved = reserved;
     }
+
+
 }

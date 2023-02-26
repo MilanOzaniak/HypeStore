@@ -4,14 +4,18 @@ import com.example.hypestore.model.Item;
 import com.example.hypestore.model.ItemBasicInfo;
 import com.example.hypestore.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.http.ResponseEntity;
 
 @RequestMapping("/item")
 @RestController
@@ -35,11 +39,18 @@ public class ItemController {
 
     @GetMapping(value = "/getImage/{imageName:.+}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public @ResponseBody byte[] getFile(@PathVariable String imageName) throws Exception {
-        try {
-            return Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/files/images/", imageName));
-        } catch (IOException e) {
-            throw new Exception("Could not read the file. Error: " + e.getMessage());
-        }
+        return itemService.getFile(imageName);
+    }
+
+    @GetMapping(value = "/getImages/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public @ResponseBody byte[] getFile(@PathVariable int id) throws Exception {
+        return itemService.getAllFiles(id);
+    }
+
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadFiles(@RequestParam("files") MultipartFile[] files) {
+        return itemService.uploadFiles(files);
     }
 
     @GetMapping("/getItem/{id}")
@@ -48,13 +59,30 @@ public class ItemController {
     }
 
     @GetMapping("/del/{id}")
-    public void deleteItem(@PathVariable Integer id){
+    public void deleteItem(@PathVariable Integer id) throws Exception {
         itemService.deleteItemById(id);
     }
 
     @PostMapping("/changeItem/{id}")
     public Item changeCurrentItem(@RequestBody ItemBasicInfo itemBasicInfo){
         return itemService.changeCurrentitem(itemBasicInfo);
+    }
+
+    @PostMapping("/addFavItem/{id}")
+    public String addFavItem(@PathVariable Integer id){
+        itemService.addFavItem(id);
+        return "success";
+    }
+
+    @GetMapping("/getFavItem")
+    public List<Item> getFavItem(){
+        return itemService.getFavItem();
+    }
+
+    @PostMapping("/removeFavItem/{id}")
+    public String removeFavItem(@PathVariable Integer id){
+        itemService.removeFavItem(id);
+        return "success";
     }
 
     //filter

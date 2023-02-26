@@ -1,6 +1,7 @@
 package com.example.hypestore.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,6 +20,13 @@ public class User {
 
     @OneToMany(mappedBy="user")
     private List<Item> items;
+
+    @ElementCollection
+    @CollectionTable(name = "favitems")
+    private List<Item> favItems = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
 
     public int getId() {
         return id;
@@ -87,4 +95,22 @@ public class User {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+    public List<Item> getFavItems() {
+        return favItems;
+    }
+
+    public void setFavItems(List<Item> favItems) {
+        this.favItems = favItems;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+
 }
