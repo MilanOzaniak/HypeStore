@@ -61,6 +61,37 @@ public class UserController {
         return userService.changeDescription(description);
     }
 
+    @PostMapping("/addFavItem/{id}")
+    public String addFavItem(@PathVariable Integer id){
+        userService.addFavItem(id);
+        return "success";
+    }
+
+    @GetMapping("/getFavItem")
+    public List<Item> getFavItem(){
+        return userService.getFavItem();
+    }
+
+    @PostMapping("/removeFavItem/{id}")
+    public String removeFavItem(@PathVariable Integer id){
+        userService.removeFavItem(id);
+        return "success";
+    }
+
+    @PostMapping("/reserveItem/{id}")
+    public void reserveItem(@PathVariable("id") int id){
+        userService.reserveItem(id);
+    }
+
+    @GetMapping("/getReservedItems")
+    public List<Item> getReservedItems(){
+        return userService.getReservedItems();
+    }
+
+    @PostMapping("/removeReservedItem/{id}")
+    public void removeReservedItem(@PathVariable("id") int id){
+        userService.removeReservedItem(id);
+    }
 
 
 }

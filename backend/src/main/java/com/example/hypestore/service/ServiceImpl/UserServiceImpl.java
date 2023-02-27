@@ -80,4 +80,59 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public void addFavItem(int id){
+        User user = getCurrentUser();
+        Item item = itemRepository.findById(id).get();
+        List<Item> items = user.getFavItems();
+        items.add(item);
+        user.setFavItems(items);
+        userRepository.save(user);
+    }
+
+    @Override
+    public List<Item> getFavItem(){
+        User user = getCurrentUser();
+        return user.getFavItems();
+    }
+
+    @Override
+    public void removeFavItem(int id){
+        User user = getCurrentUser();
+        Item item = itemRepository.findById(id).get();
+        user.getFavItems().remove(item);
+        userRepository.save(user);
+
+    }
+
+    @Override
+    public void reserveItem(int id){
+        User user = getCurrentUser();
+        Item item = itemRepository.findById(id).get();
+        List<Item> items = user.getReservedItems();
+        items.add(item);
+        user.setReservedItems(items);
+        item.setIsReserved(true);
+        itemRepository.save(item);
+        userRepository.save(user);
+    }
+
+    @Override
+    public List<Item> getReservedItems(){
+        User user = getCurrentUser();
+        return user.getReservedItems();
+    }
+
+    @Override
+    public void removeReservedItem(int id){
+        User user = getCurrentUser();
+        Item item = itemRepository.findById(id).get();
+        user.getFavItems().remove(item);
+        item.setIsReserved(false);
+        userRepository.save(user);
+        itemRepository.save(item);
+
+    }
+
+
 }

@@ -24,4 +24,10 @@ public class CommentController {
         return "deleted comment";
     }
 
+    @PostMapping("/reportComment/{id}")
+    public @ResponseBody String reportComment(@PathVariable int id){
+        commentService.reportComment(id);
+        return "reported comment";
+    }
+
 }

@@ -68,22 +68,6 @@ public class ItemController {
         return itemService.changeCurrentitem(itemBasicInfo);
     }
 
-    @PostMapping("/addFavItem/{id}")
-    public String addFavItem(@PathVariable Integer id){
-        itemService.addFavItem(id);
-        return "success";
-    }
-
-    @GetMapping("/getFavItem")
-    public List<Item> getFavItem(){
-        return itemService.getFavItem();
-    }
-
-    @PostMapping("/removeFavItem/{id}")
-    public String removeFavItem(@PathVariable Integer id){
-        itemService.removeFavItem(id);
-        return "success";
-    }
 
     //filter
     @GetMapping("/getAll")

@@ -19,7 +19,7 @@ public class Item {
     private User user;
     private String userName;
     private LocalDate date;
-    private Boolean reserved;
+    private Boolean isReserved = false;
 
     @ElementCollection
     @CollectionTable(name = "imageNames")
@@ -107,13 +107,12 @@ public class Item {
         this.imageNames = imageNames;
     }
 
-
-    public Boolean getReserved() {
-        return reserved;
+    public Boolean getIsReserved() {
+        return isReserved;
     }
 
-    public void setReserved(Boolean reserved) {
-        this.reserved = reserved;
+    public void setIsReserved(Boolean isReserved) {
+        this.isReserved = isReserved;
     }
 
 

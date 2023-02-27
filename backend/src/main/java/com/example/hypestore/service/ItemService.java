@@ -23,7 +23,4 @@ public interface ItemService {
     List<Item> getAllAccessories();
     Optional<Item> getCurrentItem(int id);
     Item changeCurrentitem(ItemBasicInfo itemBasicInfo);
-    void addFavItem(int id);
-    List<Item> getFavItem();
-    void removeFavItem(int id);
 }

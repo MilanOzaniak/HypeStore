@@ -25,6 +25,10 @@ public class User {
     @CollectionTable(name = "favitems")
     private List<Item> favItems = new ArrayList<>();
 
+    @ElementCollection
+    @CollectionTable(name = "reservedItems")
+    private List<Item> reservedItems = new ArrayList<>();
+
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 
@@ -110,6 +114,14 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<Item> getReservedItems() {
+        return reservedItems;
+    }
+
+    public void setReservedItems(List<Item> reservedItems) {
+        this.reservedItems = reservedItems;
     }
 
 

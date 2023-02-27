@@ -12,6 +12,7 @@ public class Comment {
     private String comment;
     private int ownerId;
     private User user;
+    private boolean isReported = false;
 
     @JsonIgnore
     @Access(AccessType.PROPERTY)
@@ -46,5 +47,13 @@ public class Comment {
 
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public boolean getIsReported() {
+        return isReported;
+    }
+
+    public void setIsReported(boolean isReported) {
+        this.isReported = isReported;
     }
 }

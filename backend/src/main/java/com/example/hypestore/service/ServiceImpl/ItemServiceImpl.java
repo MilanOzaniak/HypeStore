@@ -115,31 +115,6 @@ public class ItemServiceImpl implements ItemService {
         return item1;
     }
 
-    @Override
-    public void addFavItem(int id){
-        User user = userService.getCurrentUser();
-        Item item = itemRepository.findById(id).get();
-        List<Item> items = user.getFavItems();
-        items.add(item);
-        user.setFavItems(items);
-        userRepository.save(user);
-    }
-
-    @Override
-    public List<Item> getFavItem(){
-        User user = userService.getCurrentUser();
-        return user.getFavItems();
-    }
-
-    @Override
-    public void removeFavItem(int id){
-        User user = userService.getCurrentUser();
-        Item item = itemRepository.findById(id).get();
-        user.getFavItems().remove(item);
-        userRepository.save(user);
-
-    }
-
 
     //filter
     @Override
