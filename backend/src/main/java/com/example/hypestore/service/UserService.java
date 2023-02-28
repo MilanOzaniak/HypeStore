@@ -2,7 +2,7 @@ package com.example.hypestore.service;
 
 import com.example.hypestore.model.Item;
 import com.example.hypestore.model.User;
-
+import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,4 +21,7 @@ public interface UserService {
     void reserveItem(int id);
     List<Item> getReservedItems();
     void removeReservedItem(int id);
+    void rateUser(int id, double rating);
+    void profileImage(MultipartFile image);
+    byte[] getProfileImage(String filename) throws Exception;
 }

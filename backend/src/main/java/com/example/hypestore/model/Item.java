@@ -103,7 +103,7 @@ public class Item {
         return imageNames;
     }
 
-    public void setImagePaths(List<String> imageNames) {
+    public void setImageNames(List<String> imageNames) {
         this.imageNames = imageNames;
     }
 

@@ -16,7 +16,8 @@ public class User {
     private String description;
     private boolean active = true;
     private String roles;
-    private boolean accountVerified;
+    private double rating;
+    private String profileImage;
 
     @OneToMany(mappedBy="user")
     private List<Item> items;
@@ -123,6 +124,23 @@ public class User {
     public void setReservedItems(List<Item> reservedItems) {
         this.reservedItems = reservedItems;
     }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
 
 
 }

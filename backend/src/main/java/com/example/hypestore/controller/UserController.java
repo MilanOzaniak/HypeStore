@@ -4,7 +4,9 @@ import com.example.hypestore.model.Item;
 import com.example.hypestore.model.User;
 import com.example.hypestore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,9 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/del/{id}")
-    public String deleteUser(@PathVariable("id") int id)
-    {
-
+    public String deleteUser(@PathVariable("id") int id) {
         userService.deleteUserById(id);
         return "User was deleted";
     }
@@ -39,11 +39,6 @@ public class UserController {
     @GetMapping("/getItems")
     public List<Item> getItems(){
         return userService.getItemsForCurrentUser();
-    }
-
-    @GetMapping("/get")
-    public String getUser(){
-        return userService.getCurrentUser().toString() + userService.getItemsForCurrentUser();
     }
 
     @PostMapping("/changePassword")
@@ -91,6 +86,16 @@ public class UserController {
     @PostMapping("/removeReservedItem/{id}")
     public void removeReservedItem(@PathVariable("id") int id){
         userService.removeReservedItem(id);
+    }
+
+    @PostMapping("/setProfileImage")
+    public void setProfilePage(@RequestParam("image") MultipartFile image){
+        userService.profileImage(image);
+    }
+
+    @GetMapping(value = "/getImage/{imageName:.+}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public @ResponseBody byte[] getFile(@PathVariable String imageName) throws Exception {
+        return userService.getProfileImage(imageName);
     }
 
 

@@ -10,7 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.Multipart;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +31,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private ItemRepository itemRepository;
+
+    public static String uploadDirectory = System.getProperty("user.dir") + "/files/profilepics";
 
     @Override
     public List<User> getAllUsers() {
@@ -132,6 +140,35 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         itemRepository.save(item);
 
+    }
+
+    @Override
+    public void rateUser(int id, double rating){
+        User user = userRepository.findById(id).get();
+        user.setRating((user.getRating() + rating) / 2);
+    }
+
+    @Override
+    public void profileImage(MultipartFile image){
+        String fileName = image.getOriginalFilename();
+        Path fileNameAndPath = Paths.get(uploadDirectory,fileName);
+        try {
+            Files.write(fileNameAndPath, image.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        User user = getCurrentUser();
+        user.setProfileImage(fileName);
+        userRepository.save(user);
+    }
+
+    @Override
+    public byte[] getProfileImage(String imageName) throws Exception {
+        try {
+            return Files.readAllBytes(Paths.get(uploadDirectory, imageName));
+        } catch (IOException e) {
+            throw new Exception("Could not read the file. Error: " + e.getMessage());
+        }
     }
 
 
