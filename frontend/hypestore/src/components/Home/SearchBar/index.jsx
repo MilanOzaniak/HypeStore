@@ -2,9 +2,7 @@ import React from 'react';
 import './styles.css';
 import SearchIcon from '@material-ui/icons/Search';
 
-const SearchBar = ({ value, changeInput,}) => {
-
-return(
+const SearchBar = ({ value, changeInput }) => (
   <div className='searchBar-wrap'>
     <SearchIcon className='searchBar-icon' />
     <input
@@ -15,6 +13,5 @@ return(
     />
   </div>
 );
-}
 
 export default SearchBar;

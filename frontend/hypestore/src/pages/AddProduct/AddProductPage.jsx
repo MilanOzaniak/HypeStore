@@ -10,7 +10,8 @@ function AddProductPage() {
   const[size, setSize] = useState('')
   const[price, setPrice] = useState('')
   const[category, setCategory] = useState('')
-  const[file, setFile] = useState('')
+  const[files, setFiles] = useState('')
+  let imageNames = [];
 
   const titleChangeHandler = event => {
     setTitle(event.target.value)
@@ -29,18 +30,22 @@ function AddProductPage() {
   }
 
   const fileChangeHandler = event => {
-    setFile(event.target.files[0])
+    setFiles(event.target.files)
   }
 
   function handleSubmit(){
     const token = localStorage.getItem("token");
     let data = new FormData();
-    data.append("image", file);
-    const imagePath = "http://localhost:8080/item/getImage/" + file.name;
-    const item={title, price, category, size, description, imagePath};
-    //window.location.href = "/";
+    for(let i = 0; i < files.length; i++){
+      data.append("images", files[i]);
+      imageNames[i] = files[i].name
+    }
 
-    axios.post("http://localhost:8080/item/uploadImage", data, {
+
+    const item={title, price, category, size, description, imageNames};
+    window.location.href = "/";
+
+    axios.post("http://localhost:8080/item/upload", data, {
       headers:{"Authorization" : `Bearer ${token}`}})
       .then(
         console.log("image uploaded" ),
@@ -50,7 +55,7 @@ function AddProductPage() {
       headers:{"Authorization" : `Bearer ${token}`}})
     .then(
       console.log("Item created"),
-      console.log(file),
+      console.log(item)
       );
   }
     return (
@@ -133,7 +138,7 @@ function AddProductPage() {
             </textarea>
           </div>
           <div className="multipart">
-            <input id="fileInput" type="file" onChange={fileChangeHandler}/>
+            <input id="fileInput" type="file" multiple onChange={fileChangeHandler}/>
           </div>
           <div className="inputfield">
               <input type="submit" value="Create Item" className="btn1" onClick={handleSubmit}></input>

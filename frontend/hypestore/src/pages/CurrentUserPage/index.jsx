@@ -3,8 +3,10 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import './CurrentUserPage.css';
-import image from './../../images/pic1.png';
+import image from './../../images/pic.png';
 import { Link } from "react-router-dom";
+import {FiMoreVertical} from "react-icons/fi";
+import ProfileImage from "../../components/ProfilImage";
 
 const CurrentUserPage = () =>{
     const [currentUser, setCurrentUser] = useState('');
@@ -29,32 +31,33 @@ const CurrentUserPage = () =>{
     console.log(currentUser);
 
     return(
-        <div className="div">
+        <div>
             <div className='container1'>
                 <div className='profile-details1'>
+                <ProfileImage/>
                     <div className='pd-row1'>
-                        <div className='left1'>
-                            <img src={image} className='pd-image1'></img>
-                        </div>
-                        <div className='right1'>
+                        <div className='Info'>
                             <div className='Profile-Info1'>
-                                <h3>{currentUser.userName}</h3>
+                                {currentUser.userName}
                             </div>
                             <div className='Profile-Email1'>
-                                <h3>{currentUser.email}</h3>
+                                {currentUser.email}
                             </div>
                             <div className='Profile-Number1'>
-                                <h3>{currentUser.pnumber}</h3>
+                                {currentUser.pnumber}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="submenu">
-                <div className="nadpis">MY PRODUCTS</div>
-
+            <div className="Submenu-Links">
+                <a className='active' href="/Product">Product</a>
+                <a className='active' href="/Favorite">Favorite</a>
+                <a className='active' href="/Reserved">Reserved</a>
+                <a className='active' href="/Review">Review</a>
             </div>
-
+            </div>
             <div className='list-wrap'>
                 {currentUser.items? (currentUser.items.map((data) =>
                     {return (
@@ -65,11 +68,12 @@ const CurrentUserPage = () =>{
                         </Link>
                         <div className="description">
                             <div className="info">
-                                <h4>{data.title}</h4>
+                                <h4 className="data_title">{data.title}</h4>
                                 <b>${data.price}</b>
                             </div>
                             <button className= "close" onClick={() => handleDelete(data.id)}>X</button>
                         </div>
+
                      </div>
                 )})) : (<h3>No data yet</h3>)}
             </div>

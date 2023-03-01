@@ -1,13 +1,13 @@
-  .list-wrap {
+.list-wrap {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 2rem;
-    padding-bottom: 100px;
-  }
-
-  
-  .listItem-wrap {
+}
+.listItem-wrap {
     display: flex;
     flex-direction: column;
-  }
-  
+}
+.img-box{
+    height: 100%;
+    width: 100%;
+}

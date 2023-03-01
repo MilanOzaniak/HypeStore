@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import image from '../../images/pic1.png'
+import image from '../../images/pic.png'
 import { Link, useParams } from "react-router-dom";
 
 const UserPage = () =>{
@@ -36,10 +36,6 @@ const UserPage = () =>{
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="submenu">
-                <div className="nadpis">PRODUCTS</div>
-
             </div>
 
             <div className='list-wrap'>

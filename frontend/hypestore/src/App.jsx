@@ -13,6 +13,7 @@ import AccessoriesPage from './pages/AllAccessories';
 import ClothingPage from './pages/AllTshirts';
 import CurrentUserPage from './pages/CurrentUserPage';
 import Footer from './components/Footer/Footer'
+import Review from './pages/Review';
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
           <Route exact path='/accessories'> <AccessoriesPage/> </Route>
           <Route path='/signup'> <SignUp/> </Route>
           <Route path='/register'> <Formm/> </Route>
+          <Route exact path='/review'><Review/></Route>
           <Route exact path='/createitempage'><AddProductPage/> </Route>
           <Route exact path="/shoes/:id"><CurrentItem/></Route>
           <Route exact path="/clothing/:id"><CurrentItem/></Route>

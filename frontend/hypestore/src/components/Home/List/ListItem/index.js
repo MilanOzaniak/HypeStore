@@ -1,5 +1,5 @@
 import React from 'react';
-import './ItemStyle.css';
+import './styles.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -25,7 +25,7 @@ const ListItem = () => {
         return (
         <div className='listItem-wrap' key={data.id}>
             <Link to={`/${data.id}`}>
-              <img className='img-box' src={data.imagePath} alt=''/>
+              <img className='img-box' src={"http://localhost:8080/item/getImage/" + data.imageNames[1]} alt=''/>
             </Link>
             <h4>{data.title}</h4>
             <b>${data.price}</b>

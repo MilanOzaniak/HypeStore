@@ -1,5 +1,5 @@
 import React from 'react';
-import './shoesStyle.css';
+import './styles.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';

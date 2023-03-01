@@ -49,7 +49,7 @@ public class ItemController {
 
 
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadFiles(@RequestParam("files") MultipartFile[] files) {
+    public ResponseEntity<String> uploadFiles(@RequestParam("images") MultipartFile[] files) {
         return itemService.uploadFiles(files);
     }
 
