@@ -25,7 +25,7 @@ const ListItem = () => {
         return (
         <div className='listItem-wrap' key={data.id}>
             <Link to={`/${data.id}`}>
-              <img className='img-box' src={"http://localhost:8080/item/getImage/" + data.imageNames[1]} alt=''/>
+              <img className='img-box' src={"http://localhost:8080/item/getImage/" + data.imageNames[0]} alt=''/>
             </Link>
             <h4>{data.title}</h4>
             <b>${data.price}</b>

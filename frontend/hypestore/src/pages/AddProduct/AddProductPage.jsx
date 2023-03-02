@@ -30,6 +30,10 @@ function AddProductPage() {
   }
 
   const fileChangeHandler = event => {
+    if (Array.from(event.target.files).length > 5) {
+      alert(`Cannot upload files more than 5`);
+      return;
+    }
     setFiles(event.target.files)
   }
 
@@ -38,7 +42,7 @@ function AddProductPage() {
     let data = new FormData();
     for(let i = 0; i < files.length; i++){
       data.append("images", files[i]);
-      imageNames[i] = files[i].name
+      imageNames[i] = files[i].name;
     }
 
 

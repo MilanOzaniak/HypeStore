@@ -23,7 +23,7 @@ const ListAccessories = () => {
       {return (
         <div className='listItem-wrap' key={data.id}>
             <Link to={`/accessories/${data.id}`}>
-              <img className='img-box' src={data.imagePath} alt=''/>
+              <img className='img-box' src={data.imageNames ? "http://localhost:8080/item/getImage/" + data.imageNames[0] : null} alt=''/>
             </Link>
             <h4>{data.title}</h4>
             <b>${data.price}</b>

@@ -15,11 +15,12 @@ const CurrentItemPage = () =>{
     const token = localStorage.getItem("token");
     const currentUser = localStorage.getItem("userName");
     const [isAdmin] = useState(currentUser === "admin");
-    const path = "http://localhost:8080/item/getImages/"
+    let images = [];
 
     useEffect (async () =>{
         await axios.get("http://localhost:8080/item/getItem/" + id).then((response) =>{
             setCurrentItem(response.data);
+            images = response.data.imageNames;
             return response.data.userName;
 
         }).then(info => {
@@ -29,7 +30,8 @@ const CurrentItemPage = () =>{
         })
     }, [])
 
-    console.log(currentItem.imageNames[1]);
+    console.log(currentItem.imageNames)
+
 
     function handleDelete (e) {
         axios.get("http://localhost:8080/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
@@ -37,6 +39,7 @@ const CurrentItemPage = () =>{
             window.location.reload(false);
         })
     }
+
     return (
         <body>
             <section>
@@ -45,21 +48,21 @@ const CurrentItemPage = () =>{
                         <Link to={'/'} className='delete' onClick={()=>{handleDelete(id)}}>X</Link>
                     </div>
                     <div className='more' style={{display: user? 'block' : 'none'}}>
-                        <span><FiMoreVertical/></span>
+                        <FiMoreVertical/>
                     </div>
                     <div className="left">
                     <div className="main_image1">
-                            <img src={"http://localhost:8080/item/getImage/" + currentItem.imageNames[0]} alt="" className="main_img"></img>
-                        </div>
+                        <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[0] : null} alt="" className="main_img"></img>
+                    </div>
                     <div className="option flex">
-                            <img src={"http://localhost:8080/item/getImage/" + currentItem.imageNames[1]} alt=""className="main_imgg"></img>
-                            <img src={"http://localhost:8080/item/getImage/" + currentItem.imageNames[2]} alt=""className="main_imgg"></img>
-                            <img src={"http://localhost:8080/item/getImage/" + currentItem.imageNames[3]} alt=""className="main_imgg"></img>
-                            <img src={"http://localhost:8080/item/getImage/" + currentItem.imageNames[4]} alt=""className="main_imgg"></img>
+                            <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[1] : null} alt=""className="main_imgg"></img>  
+                            <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[2] : null} alt=""className="main_imgg"></img>
+                            <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
+                            <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
                         </div>
                     </div>
                     <div className="right"> 
-                        <div class="Product-Date">
+                        <div className="Product-Date">
                             {"Pridané " + currentItem.date}
                         </div>
                         <div className="Product-Title">
@@ -77,7 +80,7 @@ const CurrentItemPage = () =>{
                         <div className='profile'>
                             <div className="profilePic">
                                 <div className='pic'>
-                                    <img src={pic} className="profile_picture"/> 
+                                    <img src={"http://localhost:8080/item/getImage/" + user.profileImage} className="profile_picture"/> 
                                 </div>
                             </div>
                             <div className='profileInfo'>
