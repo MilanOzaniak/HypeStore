@@ -48,8 +48,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers("/admin","/user/del/*").hasRole("ADMIN")
-                .antMatchers("/user","/user/getItems","/item/del/*", "/item/create", "/item/uploadImage").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/", "/item/getAll", "/auth", "/register", "/item/getImage/*", "/item/getAllShoes", "/item/getAllClothing", "/item/getAllAccessories", "/item/getItem/*", "/user/getUser/*", "/user/changePassword", "/user/changePnumber", "/user/changeDescription").permitAll()
+                .antMatchers("/user","/user/getItems","/item/del/*", "/item/create", "/item/uploadImage", "/user/changePassword", "/user/changePnumber", "/user/changeDescription").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/comment/writeComment", "/comment/deleteComment", "/comment/reportComment/*", "/user/addFavItem/*", "/user/removeFavItem/*", "/user/reserveItem/*", "/user/removeReservedItem/*", "/user/setProfileImage").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/", "/item/getAll", "/auth", "/register", "/item/getImage/*", "/item/getAllShoes", "/item/getAllClothing", "/item/getAllAccessories", "/item/getItem/*", "/user/getUser/*").permitAll()
                 .antMatchers("/user/getImage/*").permitAll()
                 .anyRequest().authenticated()
                 .and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()

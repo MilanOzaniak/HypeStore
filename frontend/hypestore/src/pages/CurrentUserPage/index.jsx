@@ -10,13 +10,16 @@ import ProfileImage from "../../components/ProfilImage";
 
 const CurrentUserPage = () =>{
     const [currentUser, setCurrentUser] = useState('');
+    const [items, setItems] = useState('');
     const userName = localStorage.getItem("userName");
     const token = localStorage.getItem("token");
     
 
+    console.log(currentUser);
     useEffect( () =>{
         axios.get("http://localhost:8080/user/getUser/" + userName).then((response)=>{
             setCurrentUser(response.data);
+            setItems(response.data.items)
         })
     }, [])
 
@@ -26,6 +29,18 @@ const CurrentUserPage = () =>{
             window.location.reload(false);
         })
         
+    }
+
+    function handleProducts (e){
+        setItems(currentUser.items)
+    }
+
+    function handleFavorite (e){
+        setItems(currentUser.favItems)
+    }
+
+    function handleReserved (e){
+        setItems(currentUser.reservedItems)
     }
 
     console.log(currentUser);
@@ -52,14 +67,14 @@ const CurrentUserPage = () =>{
             </div>
             <div className="submenu">
             <div className="Submenu-Links">
-                <a className='active' href="/Product">Product</a>
-                <a className='active' href="/Favorite">Favorite</a>
-                <a className='active' href="/Reserved">Reserved</a>
-                <a className='active' href="/Review">Review</a>
+                <a className='product' onClick={handleProducts}>Product</a>
+                <a className='favorite' onClick={handleFavorite}>Favorite</a>
+                <a className='reserved' onClick={handleReserved}>Reserved</a>
+                <a className='comments' href="/Review">Comments</a>
             </div>
             </div>
             <div className='list-wrap'>
-                {currentUser.items? (currentUser.items.map((data) =>
+                {items? (items.map((data) =>
                     {return (
                         
                     <div className='listItem-wrap' key={data.id}>
