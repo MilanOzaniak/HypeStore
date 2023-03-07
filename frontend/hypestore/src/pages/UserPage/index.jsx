@@ -8,9 +8,10 @@ import { Link, useParams } from "react-router-dom";
 const UserPage = () =>{
     const { userName } = useParams();
     const [currentUser, setCurrentUser] = useState('');
+    const url = localStorage.getItem("url");
 
     useEffect( () =>{
-        axios.get("http://localhost:8080/user/getUser/" + userName).then((response)=>{
+        axios.get(url + "/user/getUser/" + userName).then((response)=>{
             setCurrentUser(response.data);
         })
     }, [])
@@ -21,7 +22,7 @@ const UserPage = () =>{
                 <div className='profile-details1'>
                     <div className='pd-row1'>
                         <div className='left1'>
-                            <img src={"http://localhost:8080/user/getImage/" + currentUser.profileImage} className='pd-image1'></img>
+                            <img src={url + "/user/getImage/" + currentUser.profileImage} className='pd-image1'></img>
                         </div>
                         <div className='right1'>
                             <div className='Profile-Info1'>
@@ -43,7 +44,7 @@ const UserPage = () =>{
                     {return (
                     <div className='listItem-wrap' key={data.id}>
                         <Link to={`/clothing/${data.id}`}>
-                            <img className='img-box' src={data.imageNames ? "http://localhost:8080/item/getImage/" + data.imageNames[0] : null} alt=''/>
+                            <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                         </Link>
                         <header>
                             <h4>{data.title}</h4>

@@ -15,26 +15,25 @@ const CurrentItemPage = () =>{
     const token = localStorage.getItem("token");
     const currentUser = localStorage.getItem("userName");
     const [isAdmin] = useState(currentUser === "admin");
+    const url = localStorage.getItem("url");
     let images = [];
 
     useEffect (async () =>{
-        await axios.get("http://localhost:8080/item/getItem/" + id).then((response) =>{
+        await axios.get(url + "/item/getItem/" + id).then((response) =>{
             setCurrentItem(response.data);
             images = response.data.imageNames;
             return response.data.userName;
 
         }).then(info => {
-            axios.get("http://localhost:8080/user/getUser/" + info).then((response)=>{
+            axios.get(url + "/user/getUser/" + info).then((response)=>{
                 setUser(response.data);
             })
         })
     }, [])
 
-    console.log(currentItem.imageNames)
-
 
     function handleDelete (e) {
-        axios.get("http://localhost:8080/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
+        axios.get(url + "/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
         .then(()=>{
             window.location.reload(false);
         })
@@ -52,13 +51,13 @@ const CurrentItemPage = () =>{
                     </div>
                     <div className="left">
                     <div className="main_image1">
-                        <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[0] : null} alt="" className="main_img"></img>
+                        <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[0] : null} alt="" className="main_img"></img>
                     </div>
                     <div className="option flex">
-                            <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[1] : null} alt=""className="main_imgg"></img>  
-                            <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[2] : null} alt=""className="main_imgg"></img>
-                            <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
-                            <img src={currentItem.imageNames ? "http://localhost:8080/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
+                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[1] : null} alt=""className="main_imgg"></img>  
+                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[2] : null} alt=""className="main_imgg"></img>
+                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
+                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
                         </div>
                     </div>
                     <div className="right"> 
@@ -80,7 +79,7 @@ const CurrentItemPage = () =>{
                         <div className='profile'>
                             <div className="profilePic">
                                 <div className='pic'>
-                                    <img src={"http://localhost:8080/item/getImage/" + user.profileImage} className="profile_picture"/> 
+                                    <img src={url + "/user/getImage/" + user.profileImage} className="profile_picture"/> 
                                 </div>
                             </div>
                             <div className='profileInfo'>

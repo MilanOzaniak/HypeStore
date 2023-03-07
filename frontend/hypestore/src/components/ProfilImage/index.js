@@ -9,9 +9,10 @@ function ProfileImage(){
   const [currentUser, setCurrentUser] = useState([]);
   const token = localStorage.getItem("token");
   const userName = localStorage.getItem("userName");
+  const url = localStorage.getItem("url");
 
   useEffect( () =>{
-    axios.get("http://localhost:8080/user/getUser/" + userName).then((response)=>{
+    axios.get(url + "/user/getUser/" + userName).then((response)=>{
         setCurrentUser(response.data);
         setProfilePic(response.data.profileImage);
     })
@@ -22,7 +23,7 @@ function ProfileImage(){
     let data = new FormData();
     data.append("image", e.target.files[0])
 
-    axios.post("http://localhost:8080/user/setProfileImage/", data, {
+    axios.post(url + "/user/setProfileImage/", data, {
       headers:{"Authorization" : `Bearer ${token}`}}).then((response)=>{
         setProfilePic(data.get("image").name)
     })
@@ -31,7 +32,7 @@ function ProfileImage(){
 			<div className="page">
 				<div className="container_avatar">
 					<div className="img-holder">
-						<img src={"http://localhost:8080/user/getImage/" + profilePic} alt="" id="img" className="imgpic" />
+						<img src={url + "/user/getImage/" + profilePic} alt="" id="img" className="imgpic" />
 					</div>
 					<input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} />
 					<div className="label1">

@@ -8,6 +8,7 @@ import '../App.css';
 const FormSignup = () => {
   const[username, setUserName] = useState('')
   const[password, setPassword] = useState('')
+  const url = localStorage.getItem("url");
 
   const nameChangeHandler = event => {
       setUserName(event.target.value)
@@ -22,7 +23,7 @@ const FormSignup = () => {
       const user={username, password};
 
       
-      axios.post("http://localhost:8080/auth", user).then((response)=>{
+      axios.post(url + "/auth", user).then((response)=>{
         const token = response.data.token;
         console.log(response.data);
         localStorage.setItem("token", token);

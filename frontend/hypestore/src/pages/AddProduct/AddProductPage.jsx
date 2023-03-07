@@ -11,6 +11,7 @@ function AddProductPage() {
   const[price, setPrice] = useState('')
   const[category, setCategory] = useState('')
   const[files, setFiles] = useState('')
+  const url = localStorage.getItem("url");
   let imageNames = [];
 
   const titleChangeHandler = event => {
@@ -47,15 +48,15 @@ function AddProductPage() {
 
 
     const item={title, price, category, size, description, imageNames};
-    window.location.href = "/";
+    //window.location.href = "/";
 
-    axios.post("http://localhost:8080/item/upload", data, {
+    axios.post(url + "/item/upload", data, {
       headers:{"Authorization" : `Bearer ${token}`}})
       .then(
         console.log("image uploaded" ),
         data.delete("image"))
 
-    axios.post("http://localhost:8080/item/create", item, {
+    axios.post(url + "/item/create", item, {
       headers:{"Authorization" : `Bearer ${token}`}})
     .then(
       console.log("Item created"),

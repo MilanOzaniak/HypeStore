@@ -14,7 +14,7 @@ const FormSignup = () => {
   const[password2, setPassword2] = useState('')
   const[user, setUser] = useState([])
   const [errors, setErrors] = useState({})
-
+  const url = localStorage.getItem("url");
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const nameChangeHandler = event => {
@@ -38,9 +38,9 @@ const FormSignup = () => {
   };
 
   function handleSubmit() {
-    const user={userName, email, pnumber, password, password2}
+    const user={userName, email, pnumber, password}
     setErrors(validateInfo(userName, email, pnumber, password, password2));
-    axios.post("http://localhost:8080/register", user);
+    axios.post(url + "/register", user);
     setIsSubmitting(true)
 
   };

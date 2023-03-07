@@ -11,20 +11,21 @@ import ProfileImage from "../../components/ProfilImage";
 const CurrentUserPage = () =>{
     const [currentUser, setCurrentUser] = useState('');
     const [items, setItems] = useState('');
+    const url = localStorage.getItem("url");
     const userName = localStorage.getItem("userName");
     const token = localStorage.getItem("token");
     
 
     console.log(currentUser);
     useEffect( () =>{
-        axios.get("http://localhost:8080/user/getUser/" + userName).then((response)=>{
+        axios.get(url + "/user/getUser/" + userName).then((response)=>{
             setCurrentUser(response.data);
             setItems(response.data.items)
         })
     }, [])
 
     function handleDelete (e) {
-        axios.get("http://localhost:8080/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
+        axios.get(url + "/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
         .then(()=>{
             window.location.reload(false);
         })
@@ -79,7 +80,7 @@ const CurrentUserPage = () =>{
                         
                     <div className='listItem-wrap' key={data.id}>
                         <Link to={`/clothing/${data.id}`}>
-                            <img className='img-box' src={data.imageNames ? "http://localhost:8080/item/getImage/" + data.imageNames[0] : null} alt=''/>
+                            <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                         </Link>
                         <div className="description">
                             <div className="info">
