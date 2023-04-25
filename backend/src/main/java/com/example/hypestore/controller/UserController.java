@@ -13,7 +13,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin
+//@CrossOrigin(origins = "https://milanozaniak.github.io/")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired
@@ -56,8 +57,8 @@ public class UserController {
         return userService.changeDescription(description);
     }
 
-    @PostMapping("/addFavItem/{id}")
-    public String addFavItem(@PathVariable Integer id){
+    @PostMapping("/addFavItem")
+    public String addFavItem(@RequestParam("id") Integer id){
         userService.addFavItem(id);
         return "success";
     }
@@ -67,14 +68,14 @@ public class UserController {
         return userService.getFavItem();
     }
 
-    @PostMapping("/removeFavItem/{id}")
-    public String removeFavItem(@PathVariable Integer id){
+    @PostMapping("/removeFavItem")
+    public String removeFavItem(@RequestParam("id") Integer id){
         userService.removeFavItem(id);
         return "success";
     }
 
-    @PostMapping("/reserveItem/{id}")
-    public void reserveItem(@PathVariable("id") int id){
+    @PostMapping("/reserveItem")
+    public void reserveItem(@RequestParam("id") int id){
         userService.reserveItem(id);
     }
 
@@ -83,8 +84,8 @@ public class UserController {
         return userService.getReservedItems();
     }
 
-    @PostMapping("/removeReservedItem/{id}")
-    public void removeReservedItem(@PathVariable("id") int id){
+    @PostMapping("/removeReservedItem")
+    public void removeReservedItem(@RequestParam("id") int id){
         userService.removeReservedItem(id);
     }
 
@@ -96,6 +97,16 @@ public class UserController {
     @GetMapping(value = "/getImage/{imageName:.+}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public @ResponseBody byte[] getFile(@PathVariable String imageName) throws Exception {
         return userService.getProfileImage(imageName);
+    }
+
+    @PostMapping("/setInstagram")
+    public void setInstagram(@RequestParam("ig") String instagram){
+        userService.addInstagram(instagram);
+    }
+
+    @PostMapping("/setFacebook")
+    public void setFacebook(@RequestParam("fb") String facebook){
+        userService.addFacebook(facebook);
     }
 
 

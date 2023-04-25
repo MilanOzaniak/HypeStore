@@ -24,4 +24,6 @@ public interface UserService {
     void rateUser(int id, double rating);
     void profileImage(MultipartFile image);
     byte[] getProfileImage(String filename) throws Exception;
+    void addInstagram(String instagram);
+    void addFacebook(String facebook);
 }

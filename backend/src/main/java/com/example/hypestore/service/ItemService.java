@@ -16,11 +16,31 @@ public interface ItemService {
     ResponseEntity<String> uploadFiles(MultipartFile[] files);
     byte[] getFile(String filename) throws Exception;
     byte[] getAllFiles(int id) throws Exception;
-    List<Item> getAllItems();
     void deleteItemById(int id) throws Exception;
+    Optional<Item> getCurrentItem(int id);
+    Item changeCurrentitem(ItemBasicInfo itemBasicInfo);
+
+    //filter
+    List<Item> getAllItems();
     List<Item> getAllShoes();
     List<Item> getAllClothing();
     List<Item> getAllAccessories();
-    Optional<Item> getCurrentItem(int id);
-    Item changeCurrentitem(ItemBasicInfo itemBasicInfo);
+    List<Item> getShoesByPriceDesc();
+    List<Item> getShoesByPriceAsc();
+    List<Item> getClothingByPriceAsc();
+    List<Item> getClothingByPriceDesc();
+    List<Item> getAccessoriesByPriceAsc();
+    List<Item> getAccessoriesByPriceDesc();
+    List<Item> getShoesBySize(String size);
+    List<Item> getClothingBySize(String size);
+    List<Item> getAccessoriesBySize(String size);
+    List<Item> getShoesByLocation(String location);
+    List<Item> getClothingByLocation(String location);
+    List<Item> getAccessoriesByLocation(String location);
+    List<Item> getShoesByGender(String gender);
+    List<Item> getClothingByGender(String gender);
+    List<Item> getAccessoriesByGender(String gender);
+    List<Item> getOldestShoes();
+    List<Item> getOldestClothing();
+    List<Item> getOldestAccessories();
 }

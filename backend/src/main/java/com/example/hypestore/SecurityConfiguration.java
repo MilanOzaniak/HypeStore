@@ -51,7 +51,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user","/user/getItems","/item/del/*", "/item/create", "/item/uploadImage", "/user/changePassword", "/user/changePnumber", "/user/changeDescription").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/comment/writeComment", "/comment/deleteComment", "/comment/reportComment/*", "/user/addFavItem/*", "/user/removeFavItem/*", "/user/reserveItem/*", "/user/removeReservedItem/*", "/user/setProfileImage").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/", "/item/getAll", "/auth", "/register", "/item/getImage/*", "/item/getAllShoes", "/item/getAllClothing", "/item/getAllAccessories", "/item/getItem/*", "/user/getUser/*").permitAll()
-                .antMatchers("/user/getImage/*").permitAll()
+                .antMatchers("/user/getImage/*", "/item/getShoesByPriceDesc", "/item/getShoesByPriceAsc", "/verify-captcha", "/item/getShoesBySize/*").permitAll()
+                .antMatchers("/item/getAccessoriesByPriceAsc", "/item/getAccessoriesByPriceDesc", "/item/getOldestAccessories", "/item/getClothingByPriceAsc", "/item/getClothingByPriceDesc", "/item/getAccessoriesByPriceDesc").permitAll()
+                .antMatchers("/item/getShoesBySize/*", "/item/getClothingBySize/*", "/item/getAccessoriesBySize/*", "/item/getShoesByLocation/*","/item/getClothingByLocation/*", "/item/getAccessoriesByLocation/*", "/item/getShoesByGender/*").permitAll()
+                .antMatchers("/item/getClothingByGender/*", "/item/getAccessoriesByGender/*", "item/getOldestShoes","item/getOldestClothing", "item/getOldestAccessories").permitAll()
                 .anyRequest().authenticated()
                 .and().exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

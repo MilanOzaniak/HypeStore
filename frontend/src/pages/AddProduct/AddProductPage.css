@@ -1,0 +1,153 @@
+.wrapperp{
+  width: 55%;
+  height: 100%;
+  background: #fff;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  padding: 50px;
+  display: block;
+}
+@media screen and (max-width: 600px){
+  .wrapperp{
+    width: 100%;
+  }
+}
+.inputfield_select {
+  width: 100%;
+}
+
+.wrapperp .title{
+  font-size: 45px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;;
+  text-transform: uppercase;
+  text-align: center;
+  color: black;
+}
+@media screen and (max-width: 420px) {
+  .title{
+    position: relative;
+  }
+}
+.wrapperp .formp{
+  width: 100%;
+  height: 70%;
+}
+
+.wrapperp .formp .inputfield{
+  margin: 30px 0px;
+}
+.wrapperp .formp .category{
+  display:flex;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+.wrapperp .formp .inputfield label{
+  width: 200px;
+  color: #252525;
+  margin-right: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.wrapperp .formp .inputfield_select label{
+  color: #252525;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.wrapperp .formp .inputfield .input,
+.wrapperp .formp .inputfield .textarea{
+  margin-top: 5px;
+  display:grid;
+  width:100%;
+  height: 50px;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.wrapperp .formp .inputfield .textarea{
+  width: 100%;
+  height: 125px;
+  resize: none;
+}
+
+.wrapperp .formp .category .inputfield_select .custom_select{
+  display:flex;
+  position: relative;
+  height: 50px;
+  margin-right: 10px;
+}
+.select_info{
+  font-size: 18px;
+  color: #aaa;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+.wrapperp .formp .inputfield_select .custom_select:before{
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  border: 8px solid;
+  border-color: #d5dbd9 transparent transparent transparent;
+  pointer-events: none;
+}
+
+.wrapperp .formp .inputfield_select .custom_select select{
+  outline: none;
+  width: 100%;
+  height: 50px;
+  border: 0px;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+}
+.multipart input{
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(83, 99, 135, 0.5);
+}
+.multipart input::-webkit-file-upload-button{
+  display: none;
+}
+.multipart input:before {
+  content: 'Upload';
+  display: inline-block;
+  background: #EEEEEE;
+  border: 0.5px solid #aaa;
+  border-radius: 3px;
+  padding: 3px 12px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #637381;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  margin-right: 10px;
+}
+.wrapperp .formp .inputfield .btn1{
+  width: 40%;
+  height: 40px;
+  margin: auto;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background: #252525;
+  color: #f5f5f5;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.3);
+}
+
+.errors{
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: #f00e0e;
+}

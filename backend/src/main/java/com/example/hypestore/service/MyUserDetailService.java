@@ -33,6 +33,7 @@ public class MyUserDetailService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles("ROLE_USER");
         user.setDescription("Edit your description");
+        user.setProfileImage("profilepic.jpg");
         return userRepository.save(user);
     }
 }

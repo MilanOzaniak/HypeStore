@@ -1,0 +1,90 @@
+.form-content {
+  border-radius: 5px;
+  position: relative;
+  background: #ffffff;
+}
+.form-contentR {
+  margin: 100px auto;
+  width: 450px;
+  height: 650px;
+  box-shadow: 3px 3px 20px 5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  border-radius: 5px;
+  display:grid;
+} 
+.formR {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-inputs {
+  margin-bottom: 8px;
+  width: 80%;
+  font-weight: 500;
+}
+.form-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+  color: #252525;
+}
+.form-input {
+  margin-top: 5px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+.form-input-btnregister {
+  width: 60%;
+  height: 40px;
+  margin: 10px 0px;
+  border: none;
+  outline: none;
+  padding-top: 7px;
+  font-size: 20px;
+  font-weight: 500;
+  background: #252525;
+  color: #f5f5f5;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.3);
+}
+.formR h2 {
+  text-align: center;
+  color: #252525;
+  margin: 10px 0px 20px;
+  font-size: 25px;
+  border-bottom: 1px solid #252525;
+} 
+.form-input-login{
+  font-size: 14px;
+  font-weight: 600;
+}
+.form-input-login a{
+  font-size: 14px;
+  font-weight: 600;
+  color: green;
+}
+.close-btn{
+  color: #252525;
+  font-size: 15px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .form-contentR {
+    width: 80%;
+  }
+}

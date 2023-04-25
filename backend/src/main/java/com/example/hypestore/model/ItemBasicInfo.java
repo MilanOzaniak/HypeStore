@@ -8,7 +8,7 @@ import lombok.Setter;
 public class ItemBasicInfo {
     private int id;
     private String title;
-    private String price;
+    private int price;
     private String size;
     private String category;
     private String description;

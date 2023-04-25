@@ -9,6 +9,7 @@ import com.example.hypestore.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -24,8 +25,10 @@ public class CommentServiceImpl implements CommentService {
         User user = userRepository.findById(id).get();
         Comment coment1 = new Comment();
         coment1.setUser(user);
-        coment1.setOwnerId(userService.getCurrentUser().getId());
+        coment1.setOwnerName(userService.getCurrentUser().getUserName());
         coment1.setComment(comment);
+        coment1.setDate(LocalDate.now());
+        coment1.setProfilePic(user.getProfileImage());
         List<Comment> comments = user.getComments();
         comments.add(coment1);
         user.setComments(comments);

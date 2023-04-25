@@ -1,0 +1,92 @@
+.wrapperedit{
+    width: 55%;
+    height: 1000px;
+    background: #fff;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    padding: 50px;
+    display: block;
+}
+  
+  
+.wrapperedit .title{
+    font-size: 45px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff;;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+}
+@media screen and (max-width: 600px){
+  .wrapperedit{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+    .title{
+      position: relative;
+    }
+}
+
+.password{
+  display: flex;
+  gap: 2%;
+}
+
+.inputfield_select {
+    width: 100%;
+}
+.wrapperedit .formedit{
+  width: 100%;
+  height: 70%;
+}
+
+.wrapperedit .formedit .inputfield{
+  margin: 30px 0px;
+}
+.wrapperedit .formedit .inputfield label{
+  width: 200px;
+  color: #252525;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.wrapperedit .formedit label{
+  color: #252525;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.wrapperedit .formedit .inputfield .input{
+  margin-top: 5px;
+  display:grid;
+  width:100%;
+  height: 50px;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+.wrapperedit .formedit .inputfield .btnulozit{
+    width: 15%;
+    height: 40px;
+    margin: auto;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    background: #252525;
+    color: #f5f5f5;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.3);
+}
+.ig {
+    font-size: 24px;
+    color: #E1306c;
+}
+.fa {
+    font-size: 24px;
+    color: #0e11b1;
+}

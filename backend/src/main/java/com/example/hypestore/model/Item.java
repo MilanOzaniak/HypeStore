@@ -1,5 +1,9 @@
 package com.example.hypestore.model;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.CollectionTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.Column;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,15 +18,18 @@ public class Item {
     private String title;
     private String description;
     private String size;
-    private String price;
+    private int price;
     private String category;
     private User user;
     private String userName;
     private LocalDate date;
+    private String location;
+    private String gender;
     private Boolean isReserved = false;
 
     @ElementCollection
-    @CollectionTable(name = "imageNames")
+    @CollectionTable(name = "image_names", joinColumns = @JoinColumn(name = "item_id"))
+    @Column(name = "images")
     private List<String> imageNames = new ArrayList<>();
 
     @Access(AccessType.PROPERTY)
@@ -67,11 +74,11 @@ public class Item {
         this.size = size;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -113,6 +120,21 @@ public class Item {
 
     public void setIsReserved(Boolean isReserved) {
         this.isReserved = isReserved;
+    }
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
 

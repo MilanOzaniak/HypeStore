@@ -1,0 +1,234 @@
+.container1{
+    max-width: 100%;
+    margin: auto;
+    border-top: 2px solid #585858;
+    background: #1B1C1E;
+    position: relative;
+}
+.profile-details1{
+    display: flex;
+}
+.userbutton{
+    right: 6px;
+    top: 14px;
+    position: absolute;
+}
+.nahlasit, .editbutton{
+  font-weight: 600;
+  border: none;
+  outline: none;
+  font-size: 25px;
+  color: #585858;
+  background-color:#1B1C1E;
+  margin-right: 10px;
+}
+.iconnahlasit{
+    color: #252525;
+    font-size: 30px;
+}
+.pd-row1{
+    margin-top: 40px;
+}
+@media screen and (max-width: 600px){
+    .pd-row1{
+    margin-top: 35px
+       }
+   }
+   
+
+.pd-image1{
+    width: 160px;
+    height: 160px;
+    margin: 35px 20px 35px 100px ;
+
+}
+.Info{
+    line-height: 30px;
+    margin-left: 5px;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+.list-wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-gap: 1.5rem;
+    justify-self: stretch;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.Profile-Info1, .Profile-Email1, .Profile-Number1{
+    font-size: 18px;
+    align-items: center;
+    color: #fff;
+    margin: 0;
+    word-break: break-word;
+}
+.facebookicon, .instagramicon{
+    font-size: 30px;
+    color:#585858;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.description{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.submenu {
+    background: #1B1C1E;
+    border-top: 1px solid #585858;
+    font-size: 20px;
+    line-height: 80px;
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 20px;
+    
+}
+.submenu a{
+    color: #585858;
+    padding: 0 30px;
+    font-size: 25px;
+}
+.submenua a.active {
+    color: #fff;
+}
+.submenu a:target {
+    color: #fff;
+}
+
+.Submenu-Links{
+    overflow-x: auto;
+}
+
+.Submenu-Links  a:hover{
+    color: #fff;
+    font-weight: 800;
+}
+@media screen and (min-width: 1240px){
+a, a:hover {
+    transition: color .15s ease-in-out;
+    }
+}
+@media screen and (max-width: 600px){
+ .container1 .submenu {
+    display: flex;
+    font-size: 14px;
+    justify-content: space-evenly;
+    line-height: 60px;
+    }
+}
+
+.nadpis{
+    color: white;
+    margin: auto;
+    font-size: 30px;
+}
+.close{
+    background-color: #1888ff;
+    border: none;
+    color: white;
+    padding: 4px 7px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+
+.comment-box,
+.post-comment, .list{
+    background-color: #d6d6d6;
+    border-radius: 6px;
+    box-shadow: 0 2px 2px #0002;
+}
+.comment-session{
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #ffffff;
+}
+.post-comment .list{
+    width: 100%;
+    height: 130px;
+    margin-bottom: 12px;
+}
+.post-comment .list .user{
+    display: flex;
+    padding: 8px;
+    overflow: hidden;
+}
+.post-comment .list .user img{
+    height: 48px;
+    width: 48px;
+    margin-right: 10px;
+}
+.comment-session .name{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.post-comment .list .day{
+    color: grey;
+    font-size: 13px;
+    font-weight: 1000;
+    margin: 0 0 6px 0;
+}
+.post-comment .comment-post{
+    padding: 0 0 15px 68px;
+}
+.comment-box{
+    padding: 10px;
+    overflow: hidden;
+}
+.comment-box .user{
+    display: flex;
+    width: min-content;
+}
+.comment-box .image img{
+    width: 42px;
+    height: 42px;
+    margin-right: 10px;
+}
+.comment-box textarea{
+    background: #d6d6d6;
+    width: 100%;
+    height: 100px;
+    margin:  10px 0;
+    padding: 10px;
+    resize: inherit;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px #0002;
+}
+.comment-box textarea:focus-visible{
+    box-shadow:  inset 0 0 0 1px #003;
+    outline: none;
+}
+.comment-box .comment-submit{
+    float: right;
+    padding: 6px 10px;
+    border: none;
+    background: #252525;
+    color: #f5f5f5;
+    cursor: pointer;
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.3);
+}
+.comment-box .comment-submit:hover{
+    background-color: #252525;
+}
+
+@media screen and (max-width: 600px){
+    .comment-session {
+    width: 90%;
+    }
+}
